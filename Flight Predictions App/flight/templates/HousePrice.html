@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+
+{% block title %}
+House Prices
+{% endblock %}
+
+{% block content %}
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 bg-dark text-center"
+     style="color:white;border-radius:1rem">
+    <h1 class="display-5 font-weight-normal text-center">House Prices Predictions</h1>
+    <br>
+        <form method="POST" style="display:inline-block;text-align:left;margin:0 auto 0 auto;width:45rem">
+
+            <div class="form-group row">
+                <label for="Ms_zoning" class="col-sm-3 col-form-label">Zoning Classification</label>
+                <div class="col-sm-7">
+                    <select class="custom-select mr-sm-2" id="MS_zoning" name="MS_zoning" required="required">
+                        <option selected>Select Zoning Classification</option>
+                        <option value="mszoning_c">Commercial (All)</option>
+                        <option value="mszoning_fv">Floating Village Residential</option>
+                        <option value="mszoning_rl">Residential Low Density</option>
+                        <option value="mszoning_rm">Residential Medium Density</option>
+                        <option value="mszoning_rh">Residential High Density</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="SaleCondition" class="col-sm-3 col-form-label">Sale Condition</label>
+                <div class="col-sm-7">
+                    <select class="custom-select mr-sm-2" id="SaleCondition" name="SaleCondition" required="required">
+                        <option selected>Select Sale Condition</option>
+                        <option value="sc_normal">Normal Sale</option>
+                        <option value="sc_abnormal">Abnormal Sale</option>
+                        <option value="sc_adj">Adjoining Land Purchase</option>
+                        <option value="sc_alloc">Allocation - two linked properties with separate deeds, typically condo with a garage unit</option>
+                        <option value="sc_family">Sale between family members</option>
+                        <option value="sc_partial">Home was not completed when last assessed (associated with New Homes)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="LandSlope" class="col-sm-3 col-form-label">Land Slope</label>
+                <div class="col-sm-7">
+                    <select class="custom-select mr-sm-2" id="LandSlope" name="LandSlope" required="required">
+                        <option selected>Select Land Slope</option>
+                        <option value="ls_gtl">Gentle slope</option>
+                        <option value="ls_mod">Moderate Slope</option>
+                        <option value="ls_sev">Severe Slope</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="Dwelling_type" class="col-sm-3 col-form-label">Dwelling Type</label>
+                <div class="col-sm-7">
+                    <select class="custom-select mr-sm-2" id="Dwelling_type" name="Dwelling_type" required="required">
+                        <option selected>Select Type of Dwelling</option>
+                        <option value="dwell_one">Single family detached</option>
+                        <option value="dwell_two">Two family conversion</option>
+                        <option value="dwell_duplex">Duplex</option>
+                        <option value="dwell_town_inside">Townhouse inside unit</option>
+                        <option value="dwell_town_end">Townhouse end unit</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row" >
+                <label for="YearBuilt" class="col-sm-3 col-form-label">Year Built</label>
+                <div class="col-sm-5">
+                    <input type="datetime-local" name="YearBuilt" id="YearBuilt"
+                           required="required" style="width:25.78rem;height:2.3rem;border-radius:.3rem;text-align:center">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="YearRemodeled" class="col-sm-3 col-form-label">Year Re-modeled</label>
+                <div class="col-sm-5">
+                    <input type="datetime-local" name="YearRemodeled" id="YearRemodeled"
+                           required="required" style="width:25.78rem;height:2.3rem;border-radius:.3rem;text-align:center">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="TotalBasementSF" class="col-sm-3 col-form-label">Total Basement sq.ft</label>
+                <div class="col-sm-7">
+                    <input class="form-control" type="text" required="required" placeholder="Total Basement Square Foot"
+                           name="TotalBasementSF" id="TotalBasementSF">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="GrLivArea" class="col-sm-3 col-form-label">Graded Living Area</label>
+                <div class="col-sm-7">
+                    <input class="form-control" type="text" required="required" placeholder="Above Graded Living Area Square Foot"
+                    name="GrLivArea" id="GrLivArea">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="FirstFloorSqft" class="col-sm-3 col-form-label">First Floor Sq.ft</label>
+                <div class="col-sm-7">
+                    <input class="form-control" type="text" required="required" placeholder="First Floor Square Foot"
+                           name="FirstFloorSqft" id="FirstFloorSqft">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="TotRmsAbvGrd" class="col-sm-3 col-form-label">Above Graded Rooms</label>
+                <div class="col-sm-7">
+                    <input class="form-control" type="text" required="required" placeholder="Total Rooms Above Grade"
+                           name="TotRmsAbvGrd" id="TotRmsAbvGrd">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="GarageArea" class="col-sm-3 col-form-label">Garage Area</label>
+                <div class="col-sm-7">
+                    <input class="form-control" type="text" required="required" placeholder="Garage Area"
+                           name="GarageArea" id="GarageArea">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="GarageCars" class="col-sm-3 col-form-label">Garage Cars</label>
+                <div class="col-sm-7">
+                    <select class="custom-select mr-sm-2" id="GarageCars" name="GarageCars" required="required">
+                        <option selected>Select Garage Cars that can fit</option>
+                        {% for i in range(0, 4) %}
+                        <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="Utilities" class="col-sm-3 col-form-label">Utilities</label>
+                <div class="col-sm-7">
+                    <select class="custom-select mr-sm-2" id="Utilities" name="Utilities" required="required">
+                        <option selected>Select Utilities Available</option>
+                        <option value="utils_pub">All Public Utilities</option>
+                        <option value="utils_sewa">Electricity and Gas only</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="Heating" class="col-sm-3 col-form-label">Heating Type</label>
+                <div class="col-sm-7">
+                    <select class="custom-select mr-sm-2" id="Heating" name="Heating" required="required">
+                        <option selected>Select Type of Heating</option>
+                        <option value="heat_floor">Floor furnace</option>
+                        <option value="heat_gas_a">Gas forced warm air furnace</option>
+                        <option value="heat_gas_w">Gas hot water or steam heat</option>
+                        <option value="heat_garv">Gravity furnace</option>
+                        <option value="heat_oth">Hot water or steam heat other than gas</option>
+                        <option value="heat_wall">Wall furnace</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="kitchen" class="col-sm-3 col-form-label">Kitchen Quality</label>
+                <div class="col-sm-7">
+                    <select class="custom-select mr-sm-2" id="Kitchen" name="Kitchen" required="required">
+                        <option selected>Select Kitchen Quality</option>
+                        <option value="kq_ex">Excellent</option>
+                        <option value="kq_gd">Good</option>
+                        <option value="kq_ta">Typical/Average</option>
+                        <option value="kq_fa">Fair</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="FullBath" class="col-sm-3 col-form-label">Full Bath</label>
+                <div class="col-sm-7">
+                    <select class="custom-select mr-sm-2" id="FullBath" name="FullBath" required="required">
+                        <option selected>Select Full Baths</option>
+                        {% for i in range(0, 5) %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="OverallQual" class="col-sm-3 col-form-label">Overall Quality</label>
+                <div class="col-sm-7">
+                    <select class="custom-select mr-sm-2" id="OverallQual" name="OverallQual" required="required">
+                        <option selected>Select Overall Quality</option>
+                        {% for i in range(0, 10) %}
+                        <option value="{{i+1}}">{{i+1}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group row" style="text-align:center;transform:translateX(3.5rem)">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-outline-success" style="height:3rem; width:6.25rem;font-size:1.3rem">Predict</button>
+                </div>
+            </div>
+        </form>
+
+    <br>
+    <h2 class="display-4 font-weight-normal text-center">
+        {{ predictions }}
+    </h2>
+
+    <div class="product-device box-shadow d-none d-md-block"></div>
+    <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,668 @@
+{% extends 'base.html' %}
+{% block title%}
+Stock Trends
+{% endblock %}
+
+{% block content %}
+<div class="row" style="overflow:hidden" xmlns="http://www.w3.org/1999/html">
+    <div class="col-2" style="margin:1rem">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button style="color:white" class="nav-link active" id="v-pills-home-tab" data-toggle="pill" data-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Stocks Home</button>
+            <button style="color:white" class="nav-link" id="v-pills-bca-tab" data-toggle="pill" data-target="#v-pills-bca" type="button" role="tab" aria-controls="v-pills-bca" aria-selected="false">Bank of America</button>
+            <button style="color:white" class="nav-link" id="v-pills-citi-tab" data-toggle="pill" data-target="#v-pills-citi" type="button" role="tab" aria-controls="v-pills-bca" aria-selected="false">Citigroup</button>
+            <button style="color:white" class="nav-link" id="v-pills-goldmann-tab" data-toggle="pill" data-target="#v-pills-goldmann" type="button" role="tab" aria-controls="v-pills-goldmann" aria-selected="false">Goldmann Sachs</button>
+            <button style="color:white" class="nav-link" id="v-pills-jpmorgan-tab" data-toggle="pill" data-target="#v-pills-jpmorgan" type="button" role="tab" aria-controls="v-pills-jpmorgan" aria-selected="false">JP Morgan</button>
+            <button style="color:white" class="nav-link" id="v-pills-mstanley-tab" data-toggle="pill" data-target="#v-pills-mstanley" type="button" role="tab" aria-controls="v-pills-mstanley" aria-selected="false">Morgan Stanley</button>
+            <button style="color:white" class="nav-link" id="v-pills-wells-tab" data-toggle="pill" data-target="#v-pills-wells" type="button" role="tab" aria-controls="v-pills-wells" aria-selected="false">Wells Fargo</button>
+            <button style="color:white" class="nav-link" id="v-pills-microsoft-tab" data-toggle="pill" data-target="#v-pills-microsoft" type="button" role="tab" aria-controls="v-pills-microsoft" aria-selected="false">Microsoft</button>
+            <button style="color:white" class="nav-link" id="v-pills-nike-tab" data-toggle="pill" data-target="#v-pills-nike" type="button" role="tab" aria-controls="v-pills-nike" aria-selected="false">Nike</button>
+            <button style="color:white" class="nav-link" id="v-pills-walmart-tab" data-toggle="pill" data-target="#v-pills-walmart" type="button" role="tab" aria-controls="v-pills-walmart" aria-selected="false">Walmart</button>
+            <button style="color:white" class="nav-link" id="v-pills-tesla-tab" data-toggle="pill" data-target="#v-pills-tesla" type="button" role="tab" aria-controls="v-pills-tesla" aria-selected="false">Tesla</button>
+        </div>
+    </div>
+    <div class="col-9">
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <div class="container bg-dark" style="margin:1rem; padding:1.8rem;border-radius:.3rem">
+                    <h1 class="display-6 font-weight-normal">About</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <h3 class="display-8 font-weight-normal" style="margin-top:2rem">What are Stocks?</h3>
+                    <p class="lead font-weight-normal" style="font-size:17px">Stocks are a type of security that gives stockholders a share of ownership in a company. Stocks also are called
+                        <span style="font-weight:700">
+                            “equities.”</span></p>
+                    <h3 class="display-8 font-weight-normal" style="margin-top:2rem">Why people buy stocks?</h3>
+                    <p class="lead font-weight-normal" style="font-size:17px">
+                        Investors buy stocks for various reasons. Here are some of them:</p>
+                    <ul>
+                        <li>Capital appreciation, which occurs when a stock rises in price</li>
+                        <li>Dividend payments, which come when the company distributes some of its earnings to stockholders</li>
+                        <li>Ability to vote shares and influence the company</li>
+                    </ul>
+                    <h3 class="display-8 font-weight-normal" style="margin-top:2rem">What are Stock Tickers?</h3>
+                    <p class="lead font-weight-normal" style="font-size:17px">
+                        A stock ticker is a report of the price of certain securities, updated continuously
+                        throughout the trading session by the various stock market exchanges.
+
+                        A <span style="font-weight:700">
+                            "tick”</span> is any change in the price of the security,
+                        whether that movement is up or down. A stock ticker automatically displays
+                        these ticks, along with other relevant information, like trading volume,
+                        that investors and traders use to stay informed about current market
+                        conditions and the interest in that particular security.</p>
+
+                    <p class="lead font-weight-normal" style="font-size:17px">The ticker provides current information for certain stocks,
+                        including the ticker symbol (the one-to four-letter code that represents a
+                        particular stock), quantity traded (volume for each transaction), price,
+                        a green "up" arrow if the price is higher than the previous day's closing value, a red
+                        "down" arrow if the price is lower, and the net price change (either as a dollar amount or percentage)
+                        from the previous day's close.</p>
+
+                    <h3  class="display-8 font-weight-normal" style="margin-top:2rem">What is Stock Analysis?</h3>
+                    <p class="lead font-weight-normal" style="font-size:17px">Stock analysis refers to the method
+                        that an investor or trader uses to evaluate and investigate a particular trading instrument,
+                        investment sector, or the stock market as a whole. Stock analysis is also called equity analysis or
+                        market analysis. Investors or traders make buying or selling
+                        decisions based on stock analysis information. Stock analysis follows the
+                        idea that analysts can create methodologies to select stocks by studying past and present data.</p>
+
+                    <h1  class="display-8 font-weight-normal" style="margin-top:2rem">Stocks used for analysis</h1>
+                    <div style="width: 3rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2rem ;font-size:17px">The below are a few stocks that I have used for
+                    stock analysis. The table section consists of stock tickers, stock name, maximum high and close prices of the stock. </p>
+                    <table class="table table-striped table-dark" style="margin-top:2rem">
+                        <thead>
+                        <tr>
+                            <th scope="col">Stock Ticker</th>
+                            <th scope="col">Stock Name</th>
+                            <th scope="col">High</th>
+                            <th scope="col">Close</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in range(10) %}
+                        <tr>
+                            <th scope="row">{{ tickers[i] }}</th>
+                            <td>{{ stock_name[i] }}</td>
+                            <td>{{ max_high[i] }}</td>
+                            <td>{{ max_closing[i] }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="text-center">
+                        <img src="../static/images/download.png" alt="stocks_close_history" style="width:1000px">
+                    </div>
+                    <h1  class="display-8 font-weight-normal" style="margin-top:2.5rem">Market Risk</h1>
+                    <div style="width: 3rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">Market risk is the possibility that
+                        an individual or other entity will experience losses due to factors that affect the overall performance of
+                        investments in the financial markets.
+                        Market risk and
+                        specific risk (unsystematic) make up the two major categories of investment risk.
+                        Market risk, also called <span style="font-weight:700">"systematic risk"</span>, cannot be
+                        eliminated through diversification,
+                        though it can be hedged in other ways. Sources of market risk include recessions, political turmoil,
+                        changes in interest rates, natural disasters, and terrorist attacks. Systematic, or market risk, tends
+                        to influence the entire market at the same time.
+
+                        This can be contrasted with unsystematic risk, which is unique to a specific company or industry.
+                        Also known as <span style="font-weight:700">“nonsystematic risk”</span>,
+                        <span style="font-weight:700">"specific risk"</span>,
+                        <span style="font-weight:700">"diversifiable risk"</span> or
+                        <span style="font-weight:700">"residual risk" </span>,
+                        in the context of an investment portfolio, unsystematic risk can be reduced through diversification.
+                    </p>
+                    <div class="text-center">
+                        <img src="../static/images/download (12).png"  alt="market_risk_image" style="width:800px">
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="tab-pane fade" id="v-pills-bca" role="tabpanel" aria-labelledby="v-pills-bca-tab">
+                <div class="container bg-dark" style="margin:1rem; padding:1.8rem;border-radius:.3rem">
+                    <h1 class="display-6 font-weight-normal">Bank of America</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">Bank of America is a
+                        <span style="font-weight:700">Multinational investment bank</span>  and
+                        <span style="font-weight:700">financial services holding</span> company located in North Carolina.
+                        Bank of America is one of the big four banking institutions in the United States. It serves 10.73%
+                        of all American bank deposits, in direct competition with JPMorgan chase, Citigroup, and Wells Fargo.
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Risk of investment in Bank of America</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">The risk of investment in Bank of America
+                        is not so risky compared to Tesla. As in the previous article, we have seen the risk factor
+                        of various stocks, and most of them were seen much closer to each other, which makes them less risky.
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Closing price history and Moving Average</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">Date collected from IEX API and
+                        presented in the visual format, history of the stocks goes from year 2017 to the current date. Moving
+                        average is a technical indicator that is used by the investors and traders in order to determine the
+                        trend direction of the securities.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (13).png"  alt="boa_closing" style="width:800px">
+                        <p style="margin-top:.5rem">Closing History of Bank of America</p>
+                    </div>
+
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (1).png"  alt="boa_closing" style="width:600px">
+                        <p style="margin-top:.5rem">Moving average with period of 10, 20 and 30 days</p>
+                    </div>
+
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Predictions</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">With the collected we will be
+                        predicting for the stock prices for the next 60 days. The prediction uses the LSTM algorithm that uses
+                        memory elements for storing the events that happened long time ago and events that happened yesterday.
+                        It mostly works on the past data to predict the future outcome, this completely depends on the series
+                        of events that has happened in the past. This data series of events can also be called as 'Time Series
+                        Data'. The below graph specifies the predictions with Train and Valid. Train is the past data that was
+                        collected. Valid data is the sample of the data that was collected from the Train data.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (14).png"  alt="boa_closing" style="width:900px">
+                        <p style="margin-top:.5rem">Next 60 days predictions</p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="tab-pane fade" id="v-pills-citi" role="tabpanel" aria-labelledby="v-pills-citi-tab">
+                <div class="container bg-dark" style="margin:1rem; padding:1.8rem;border-radius:.3rem">
+                    <h1 class="display-6 font-weight-normal">Citigroup</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">
+                        <span style="font-weight:700">Citigroup Inc.</span> or Citi (stylized as citi) is an American multinational <span
+                                style="font-weight:700">Investment bank</span> and <span
+                                style="font-weight:700">Financial services</span>
+                        corporation headquartered in New York City. The company was formed by the merger of banking giant
+                        Citicorp and financial conglomerate <span style="font-weight:700">Travelers Group</span>
+                        in 1998; Travelers was subsequently spun off from the company
+                        in 2002. Citigroup owns Citicorp, the holding company for Citibank, as well as several international
+                        subsidiaries. Citigroup is incorporated in Delaware.
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Risk of investment in Citigroup</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">Valuation metrics show that Citigroup Inc.
+                        may be <span style="font-weight:700">Undervalued</span>. Its Value Score of B indicates it would be a
+                        good pick for value investors.
+                        The financial health and growth prospects of C, demonstrate its potential to outperform the market.
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Closing price history and Moving Average</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">Date collected from IEX API and
+                        presented in the visual format, history of the stocks goes from year 2017 to the current date. Moving
+                        average is a technical indicator that is used by the investors and traders in order to determine the
+                        trend direction of the securities.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (15).png"  alt="citi_closing" style="width:800px">
+                        <p style="margin-top:.5rem">Closing History of Citigroup</p>
+                    </div>
+
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (2).png"  alt="citi_closing" style="width:600px">
+                        <p style="margin-top:.5rem">Moving average with period of 10, 20 and 30 days</p>
+                    </div>
+
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Predictions</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">With the collected we will be
+                        predicting for the stock prices for the next 60 days. The prediction uses the LSTM algorithm that uses
+                        memory elements for storing the events that happened long time ago and events that happened yesterday.
+                        It mostly works on the past data to predict the future outcome, this completely depends on the series
+                        of events that has happened in the past. This data series of events can also be called as 'Time Series
+                        Data'. The below graph specifies the predictions with Train and Valid. Train is the past data that was
+                        collected. Valid data is the sample of the data that was collected from the Train data.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (16).png"  alt="citi_closing" style="width:900px">
+                        <p style="margin-top:.5rem">Next 60 days predictions</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-goldmann" role="tabpanel" aria-labelledby="v-pills-goldmann-tab">
+                <div class="container bg-dark" style="margin:1rem; padding:1.8rem;border-radius:.3rem">
+                    <h1 class="display-6 font-weight-normal">Goldmann Sachs</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">
+                        <span style="font-weight:700">Goldman Sachs</span> is an <span style="font-weight:700">American multinational investment bank</span> and <span style="font-weight:700">
+                        Financial services
+                    </span>
+                        company. Founded in 1869, Goldman Sachs is headquartered at 200 West Street in Lower Manhattan, with regional headquarters in
+                        London, Warsaw, Bangalore, Hong Kong, Tokyo, Dallas and Salt Lake City, and additional offices in other
+                        international financial centers. Goldman Sachs is the second-largest investment bank in the world by
+                        revenue
+                        and is ranked 57th on the Fortune 500 list of the largest United States corporations by total revenue.
+                        It is considered a systemically important financial institution by the <span style="font-weight:700">Undervalued</span>
+                        Financial Stability Board.
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Risk of investment in Goldmann Sachs</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">
+                        The consensus recommendation for GS stock was a 'hold' based on 16 analysts'
+                        views compiled by MarketBeat, as of 10 January.
+                        A total of nine analysts have rated the stock a 'buy', with five rating it a 'hold' and one a 'sell'.
+                        Note that their predictions can be wrong.
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Closing price history and Moving Average</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">Date collected from IEX API and
+                        presented in the visual format, history of the stocks goes from year 2017 to the current date. Moving
+                        average is a technical indicator that is used by the investors and traders in order to determine the
+                        trend direction of the securities.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (17).png"  alt="gs_closing" style="width:800px">
+                        <p style="margin-top:.5rem">Closing History of Goldmann Sachs</p>
+                    </div>
+
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (3).png"  alt="gs_closing" style="width:600px">
+                        <p style="margin-top:.5rem">Moving average with period of 10, 20 and 30 days</p>
+                    </div>
+
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Predictions</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">With the collected we will be
+                        predicting for the stock prices for the next 60 days. The prediction uses the LSTM algorithm that uses
+                        memory elements for storing the events that happened long time ago and events that happened yesterday.
+                        It mostly works on the past data to predict the future outcome, this completely depends on the series
+                        of events that has happened in the past. This data series of events can also be called as 'Time Series
+                        Data'. The below graph specifies the predictions with Train and Valid. Train is the past data that was
+                        collected. Valid data is the sample of the data that was collected from the Train data.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (18).png"  alt="gs_closing" style="width:900px">
+                        <p style="margin-top:.5rem">Next 60 days predictions</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-jpmorgan" role="tabpanel" aria-labelledby="v-pills-jpmorgan-tab">
+                <div class="container bg-dark" style="margin:1rem; padding:1.8rem;border-radius:.3rem">
+                    <h1 class="display-6 font-weight-normal">JP Morgan</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">
+                        <span style="font-weight:700">JPMorgan Chase & Co.</span> is an  <span style="font-weight:700">American
+                        multinational financial services</span> company headquartered in
+                        New York City and incorporated in Delaware. It is the largest bank in the United States and the world's
+                        largest bank by market capitalization (as of 2023). As the largest of the Big Four banks, the firm is
+                        considered systemically important by the Financial Stability Board. Its size and scale has led to enhanced
+                        regulatory oversight as well as the maintenance of an internal "Fortress Balance Sheet" and liquidity reserves.
+                        The firm is headquartered on
+                        383 Madison Avenue in Midtown Manhattan and is set to move into the under-construction JPMorgan Chase Building in 2025.
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Risk of investment in JP Morgan</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">
+                        J.P. Morgan Chase & Co. currently has an <span style="font-weight:700">A+</span> rating with the <span style="font-weight:700">Better Business Bureau</span> . 
+                        Since the BBB rates companies using an A+ to F range, this suggests that J.P. 
+                        Morgan online investing displays trustworthy business practices and interacts well with its customers
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Closing price history and Moving Average</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">Date collected from IEX API and
+                        presented in the visual format, history of the stocks goes from year 2017 to the current date. Moving
+                        average is a technical indicator that is used by the investors and traders in order to determine the
+                        trend direction of the securities.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (19).png"  alt="jp_closing" style="width:800px">
+                        <p style="margin-top:.5rem">Closing History of JP Morgan</p>
+                    </div>
+
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (4).png"  alt="jp_closing" style="width:600px">
+                        <p style="margin-top:.5rem">Moving average with period of 10, 20 and 30 days</p>
+                    </div>
+
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Predictions</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">With the collected we will be
+                        predicting for the stock prices for the next 60 days. The prediction uses the LSTM algorithm that uses
+                        memory elements for storing the events that happened long time ago and events that happened yesterday.
+                        It mostly works on the past data to predict the future outcome, this completely depends on the series
+                        of events that has happened in the past. This data series of events can also be called as 'Time Series
+                        Data'. The below graph specifies the predictions with Train and Valid. Train is the past data that was
+                        collected. Valid data is the sample of the data that was collected from the Train data.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (20).png"  alt="jp_closing" style="width:900px">
+                        <p style="margin-top:.5rem">Next 60 days predictions</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-mstanley" role="tabpanel" aria-labelledby="v-pills-mstanley-tab">
+                <div class="container bg-dark" style="margin:1rem; padding:1.8rem;border-radius:.3rem">
+                    <h1 class="display-6 font-weight-normal">Morgan Stanley</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">
+                        <span style="font-weight:700">Morgan Stanley</span> is an <span style="font-weight:700">
+                        American multinational investment bank</span> and <span style="font-weight:700">Financial
+                        services</span> headquartered at 1585
+                        Broadway in Midtown Manhattan, New York City. With offices in more than 41 countries and more than
+                        75,000 employees, the firm's clients include corporations, governments, institutions,
+                        and individuals. Morgan Stanley ranked No. 61 in the 2021 Fortune 500 list of the largest United States
+                        corporations by total revenue.
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Risk of investment in Morgan Stanley</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">
+                        Morgan Stanley has been taking several business restructuring initiatives, with the goal to
+                        increase reliable revenue sources. The company’s strategic expansion efforts,
+                        including acquisitions of Eaton Vance (closed on Mar 1), E*Trade Financial (October 2020) and Shareworks (2019) are steps in these directions.
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Closing price history and Moving Average</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">Date collected from IEX API and
+                        presented in the visual format, history of the stocks goes from year 2017 to the current date. Moving
+                        average is a technical indicator that is used by the investors and traders in order to determine the
+                        trend direction of the securities.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (22).png"  alt="ms_closing" style="width:800px">
+                        <p style="margin-top:.5rem">Closing History of Morgan Stanley</p>
+                    </div>
+
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (5).png"  alt="ms_closing" style="width:600px">
+                        <p style="margin-top:.5rem">Moving average with period of 10, 20 and 30 days</p>
+                    </div>
+
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Predictions</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">With the collected we will be
+                        predicting for the stock prices for the next 60 days. The prediction uses the LSTM algorithm that uses
+                        memory elements for storing the events that happened long time ago and events that happened yesterday.
+                        It mostly works on the past data to predict the future outcome, this completely depends on the series
+                        of events that has happened in the past. This data series of events can also be called as 'Time Series
+                        Data'. The below graph specifies the predictions with Train and Valid. Train is the past data that was
+                        collected. Valid data is the sample of the data that was collected from the Train data.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (23).png"  alt="ms_closing" style="width:900px">
+                        <p style="margin-top:.5rem">Next 60 days predictions</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-wells" role="tabpanel" aria-labelledby="v-pills-wells-tab">
+                <div class="container bg-dark" style="margin:1rem; padding:1.8rem;border-radius:.3rem">
+                    <h1 class="display-6 font-weight-normal">Wells Fargo</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">
+                        <span style="font-weight:700">Wells Fargo</span> is an <span style="font-weight:700">
+                        American multinational investment bank</span> with corporate headquarters in
+                        San Francisco, California; operational headquarters in Manhattan; and managerial offices
+                        throughout the United States and internationally. The company has operations in 35 countries with over
+                        70 million customers globally. It is considered a systemically important financial institution by the Financial Stability Board.
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Risk of investment in Wells Fargo</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">
+                        Valuation metrics show that Wells Fargo & Company <span style="font-weight:700">may be undervalued</span>. Its Value Score of B indicates it would be a good pick for value investors.
+                        The financial health and growth prospects of WFC, demonstrate its potential to outperform the market. It currently has a Growth Score of D.
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Closing price history and Moving Average</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">Date collected from IEX API and
+                        presented in the visual format, history of the stocks goes from year 2017 to the current date. Moving
+                        average is a technical indicator that is used by the investors and traders in order to determine the
+                        trend direction of the securities.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (33).png"  alt="wfc_closing" style="width:800px">
+                        <p style="margin-top:.5rem">Closing History of Wells Fargo</p>
+                    </div>
+
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (6).png"  alt="wfc_closing" style="width:600px">
+                        <p style="margin-top:.5rem">Moving average with period of 10, 20 and 30 days</p>
+                    </div>
+
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Predictions</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">With the collected we will be
+                        predicting for the stock prices for the next 60 days. The prediction uses the LSTM algorithm that uses
+                        memory elements for storing the events that happened long time ago and events that happened yesterday.
+                        It mostly works on the past data to predict the future outcome, this completely depends on the series
+                        of events that has happened in the past. This data series of events can also be called as 'Time Series
+                        Data'. The below graph specifies the predictions with Train and Valid. Train is the past data that was
+                        collected. Valid data is the sample of the data that was collected from the Train data.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (34).png"  alt="wfc_closing" style="width:900px">
+                        <p style="margin-top:.5rem">Next 60 days predictions</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-microsoft" role="tabpanel" aria-labelledby="v-pills-microsoft-tab">
+                <div class="container bg-dark" style="margin:1rem; padding:1.8rem;border-radius:.3rem">
+                    <h1 class="display-6 font-weight-normal">Microsoft</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">
+                        <span style="font-weight:700">Microsoft</span> is an <span style="font-weight:700">American multinational
+                        technology</span> corporation headquartered in Redmond, Washington, United States.
+                        Microsoft's best-known software products are the Windows line of operating systems, the Microsoft Office suite,
+                        and the Internet Explorer and Edge web browsers. Its flagship hardware products are the
+                        Xbox video game consoles and the Microsoft Surface lineup of touchscreen personal computers.
+                        Microsoft ranked No. 21 in the 2020 Fortune 500 rankings of the largest United States corporations by total
+                        revenue; it was the world's largest software maker by revenue as of 2019.
+                        It is one of the Big Five American information technology companies, alongside Alphabet (Google), Amazon, Apple, and Meta (Facebook).
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Risk of investment in Microsoft</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">
+                        <span style="font-weight:700">Microsoft's recent results were solid, but the company cautioned
+                        about its cloud business specifically and its revenue overall in 2023</span>.
+                        Given the outlook, Morningstar lowered its fair value estimate on Microsoft stock to $310 from $320 per share.
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Closing price history and Moving Average</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">Date collected from IEX API and
+                        presented in the visual format, history of the stocks goes from year 2017 to the current date. Moving
+                        average is a technical indicator that is used by the investors and traders in order to determine the
+                        trend direction of the securities.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (28).png"  alt="msft_closing" style="width:800px">
+                        <p style="margin-top:.5rem">Closing History of Microsoft</p>
+                    </div>
+
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (10).png"  alt="msft_closing" style="width:600px">
+                        <p style="margin-top:.5rem">Moving average with period of 10, 20 and 30 days</p>
+                    </div>
+
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Predictions</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">With the collected we will be
+                        predicting for the stock prices for the next 60 days. The prediction uses the LSTM algorithm that uses
+                        memory elements for storing the events that happened long time ago and events that happened yesterday.
+                        It mostly works on the past data to predict the future outcome, this completely depends on the series
+                        of events that has happened in the past. This data series of events can also be called as 'Time Series
+                        Data'. The below graph specifies the predictions with Train and Valid. Train is the past data that was
+                        collected. Valid data is the sample of the data that was collected from the Train data.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (29).png"  alt="msft_closing" style="width:900px">
+                        <p style="margin-top:.5rem">Next 60 days predictions</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-nike" role="tabpanel" aria-labelledby="v-pills-nike-tab">
+                <div class="container bg-dark" style="margin:1rem; padding:1.8rem;border-radius:.3rem">
+                    <h1 class="display-6 font-weight-normal">Nike</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">
+                        <span style="font-weight:700">Nike</span> is an <span style="font-weight:700">American multinational
+                        corporation</span> that is engaged in
+                        the design, development, manufacturing, and worldwide marketing and sales of footwear, apparel, equipment,
+                        accessories, and services. The company is headquartered near Beaverton, Oregon, in the Portland
+                        metropolitan area. It is the world's largest supplier of
+                        athletic shoes and apparel and a major manufacturer of sports equipment, with revenue in excess of US
+                        $46 billion in its fiscal year 2022.
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Risk of investment in Nike</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">
+                        The financial health and growth prospects of NKE, demonstrate its potential to <span
+                            style="font-weight:700">underperform</span> the market. It currently has a Growth Score of B.
+                        Recent price changes and earnings estimate revisions indicate this would be a good stock for momentum investors with a Momentum Score of B.
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Closing price history and Moving Average</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">Date collected from IEX API and
+                        presented in the visual format, history of the stocks goes from year 2017 to the current date. Moving
+                        average is a technical indicator that is used by the investors and traders in order to determine the
+                        trend direction of the securities.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (31).png"  alt="nke_closing" style="width:800px">
+                        <p style="margin-top:.5rem">Closing History of Nike</p>
+                    </div>
+
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (7).png"  alt="nke_closing" style="width:600px">
+                        <p style="margin-top:.5rem">Moving average with period of 10, 20 and 30 days</p>
+                    </div>
+
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Predictions</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">With the collected we will be
+                        predicting for the stock prices for the next 60 days. The prediction uses the LSTM algorithm that uses
+                        memory elements for storing the events that happened long time ago and events that happened yesterday.
+                        It mostly works on the past data to predict the future outcome, this completely depends on the series
+                        of events that has happened in the past. This data series of events can also be called as 'Time Series
+                        Data'. The below graph specifies the predictions with Train and Valid. Train is the past data that was
+                        collected. Valid data is the sample of the data that was collected from the Train data.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (32).png"  alt="nke_closing" style="width:900px">
+                        <p style="margin-top:.5rem">Next 60 days predictions</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-walmart" role="tabpanel" aria-labelledby="v-pills-walmart-tab">
+                <div class="container bg-dark" style="margin:1rem; padding:1.8rem;border-radius:.3rem">
+                    <h1 class="display-6 font-weight-normal">Walmart</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">
+                        <span style="font-weight:700">Walmart</span> is an <span style="font-weight:700">American multinational retail</span>
+                        that operates a chain of hypermarkets (also called supercenters), discount department stores, and grocery stores
+                        in the United States, headquartered in Bentonville, Arkansas. The company was founded by Sam Walton and
+                        James "Bud" Walton in nearby Rogers, Arkansas in 1962 and
+                        incorporated under Delaware General Corporation Law on October 31, 1969. It also owns and operates Sam's Club retail warehouses.
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Risk of investment in Walmart</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">
+                        Consensus Rating. Walmart has received a <span style="font-weight:700">consensus rating of Buy</span>.
+                        The company's average rating score is 2.73, and is based on 23 buy ratings, 6 hold ratings, and 1 sell rating.
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Closing price history and Moving Average</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">Date collected from IEX API and
+                        presented in the visual format, history of the stocks goes from year 2017 to the current date. Moving
+                        average is a technical indicator that is used by the investors and traders in order to determine the
+                        trend direction of the securities.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (24).png"  alt="wmt_closing" style="width:800px">
+                        <p style="margin-top:.5rem">Closing History of Walmart</p>
+                    </div>
+
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (8).png"  alt="wmt_closing" style="width:600px">
+                        <p style="margin-top:.5rem">Moving average with period of 10, 20 and 30 days</p>
+                    </div>
+
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Predictions</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">With the collected we will be
+                        predicting for the stock prices for the next 60 days. The prediction uses the LSTM algorithm that uses
+                        memory elements for storing the events that happened long time ago and events that happened yesterday.
+                        It mostly works on the past data to predict the future outcome, this completely depends on the series
+                        of events that has happened in the past. This data series of events can also be called as 'Time Series
+                        Data'. The below graph specifies the predictions with Train and Valid. Train is the past data that was
+                        collected. Valid data is the sample of the data that was collected from the Train data.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (25).png"  alt="wmt_closing" style="width:900px">
+                        <p style="margin-top:.5rem">Next 60 days predictions</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-tesla" role="tabpanel" aria-labelledby="v-pills-tesla-tab">
+                <div class="container bg-dark" style="margin:1rem; padding:1.8rem;border-radius:.3rem">
+                    <h1 class="display-6 font-weight-normal">Tesla</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">
+                        <span style="font-weight:700">Tesla</span> is an <span style="font-weight:700">American multinational
+                        retail</span>, <span style="font-weight:700">Automotive</span>,<span style="font-weight:700">Artificial
+                        intelligence</span> and <span style="font-weight:700">Clean energy</span> company headquartered in
+                        Austin, Texas. Tesla designs and manufactures electric vehicles (electric cars and trucks), battery
+                        energy storage from home to grid-scale, solar panels and solar roof tiles, and related products and services.
+                        Tesla is one of the world's most valuable companies and is, as of 2023, the world's most valuable automaker.
+                        In 2021, the company had the most worldwide sales of battery electric vehicles and plug-in electric
+                        vehicles, capturing 21% of the battery-electric (purely electric) market and 14% of the plug-in market
+                        (which includes plug-in hybrids). Through its subsidiary Tesla Energy, the company develops and is a major
+                        installer of photovoltaic systems in the United States. Tesla Energy is also one of the largest global
+                        suppliers of battery energy storage systems, with 3.99 gigawatt-hours (GWh) installed in 2021
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Risk of investment in Tesla</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">
+                        Its production increased 47% in 2022 versus 2021. But deliveries only <span style="font-weight:700">increased 40%</span>,
+                        leading investors to believe Tesla might not, in fact, meet its previous projections to average 50% growth over the next few years.
+                        That said, now seems to be a <span style="font-weight:700">good time to begin buying, or adding to your position</span>.
+                    </p>
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Closing price history and Moving Average</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">Date collected from IEX API and
+                        presented in the visual format, history of the stocks goes from year 2017 to the current date. Moving
+                        average is a technical indicator that is used by the investors and traders in order to determine the
+                        trend direction of the securities.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (26).png"  alt="tsla_closing" style="width:800px">
+                        <p style="margin-top:.5rem">Closing History of Tesla</p>
+                    </div>
+
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (9).png"  alt="tsla_closing" style="width:600px">
+                        <p style="margin-top:.5rem">Moving average with period of 10, 20 and 30 days</p>
+                    </div>
+
+                    <h1 class="display-6 font-weight-normal" style="margin-top:2.5rem">Predictions</h1>
+                    <div style="width: 2.5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+                    <p class="lead font-weight-normal" style="margin-top:2.5rem ;font-size:17px">With the collected we will be
+                        predicting for the stock prices for the next 60 days. The prediction uses the LSTM algorithm that uses
+                        memory elements for storing the events that happened long time ago and events that happened yesterday.
+                        It mostly works on the past data to predict the future outcome, this completely depends on the series
+                        of events that has happened in the past. This data series of events can also be called as 'Time Series
+                        Data'. The below graph specifies the predictions with Train and Valid. Train is the past data that was
+                        collected. Valid data is the sample of the data that was collected from the Train data.
+                    </p>
+                    <div class="text-center" style="margin-top:1.5rem">
+                        <img src="../static/images/download (27).png"  alt="tsla_closing" style="width:900px">
+                        <p style="margin-top:.5rem">Next 60 days predictions</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

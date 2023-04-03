@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 bg-dark text-center" style="color:white;border-radius:1rem">
+    <div class="col-md-10 p-lg-8 mx-auto my-5">
+        <h1 class="display-4 font-weight-normal text-center">OMGPreds</h1>
+        <p class="lead font-weight-normal text-left"><span style="font-weight: 700">Machine learning</span> (ML) is a field of inquiry devoted to
+            understanding and building methods that 'learn', that is, methods that leverage data to improve performance on some
+            set of tasks. It is seen as a part of artificial intelligence.
+
+            Machine learning algorithms build a model based on sample data, known as training data,
+            in order to make predictions or decisions without being explicitly programmed to do so.
+            Machine learning algorithms are used in a wide variety of applications, such as in medicine,
+            email filtering, speech recognition, agriculture, and computer vision, where it is difficult or
+            unfeasible to develop conventional algorithms to perform the needed tasks.</p>
+        <a class="btn btn-primary" href="{{ url_for('flight_preds') }}" style="margin-right:1.5rem">Flight Prices</a>
+        <a class="btn btn-primary" href="{{ url_for('house_preds') }}">House Prices</a>
+        <a class="btn btn-primary" href="{{ url_for('stocks_preds') }}" style="margin-left:1.5rem">Stocks Trend</a>
+    </div>
+    <div class="container" style="display:flex; flex-direction: row; gap:10rem; justify-content:center; align-items:center">
+        <div>
+            <h1 class="display-4 font-weight-normal text-center">Build Simple</h1>
+            <div style="width: 4rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+        </div>
+        <div class="text-center" style="margin-top:1.5rem">
+            <img src="../static/images/1676687387business-person-taking-an-ok-pose-svgrepo-com.svg"  alt="boa_closing"
+                 style="width:250px">
+        </div>
+    </div>
+    <div class="container" style="display:flex; flex-direction: row; gap:8rem; justify-content:center; align-items:center">
+        <div class="text-center" style="margin-top:1.5rem">
+            <img src="../static/images/light-bulb-svgrepo-com.svg"  alt="boa_closing"
+                 style="width:250px">
+        </div>
+        <div>
+            <h1 class="display-4 font-weight-normal text-center">Understand Better</h1>
+            <div style="width: 4rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+        </div>
+    </div>
+    <div class="container" style="display:flex; flex-direction: row; gap:7rem; justify-content:center; align-items:center">
+        <div>
+            <h1 class="display-4 font-weight-normal text-center">Work smarter and harder</h1>
+            <div style="width: 5rem; height:5px; background-color: #e83e8c; position;absolute"></div>
+        </div>
+        <div class="text-center" style="margin-top:1.5rem">
+            <img src="../static/images/brain-svgrepo-com.svg"  alt="boa_closing"
+                 style="width:200px">
+        </div>
+    </div>
+    <div class="product-device box-shadow d-none d-md-block"></div>
+    <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+</div>
+{% endblock %}

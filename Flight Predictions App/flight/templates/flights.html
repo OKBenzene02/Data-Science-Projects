@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}
+Flight Prices
+{% endblock %}
+
+{% block content %}
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 bg-dark text-center" style="color:white;border-radius:1rem">
+  <h1 class="display-5 font-weight-normal text-center">Flight Prices Predictions</h1>
+  <div class="col-md-10 p-lg-8 mx-auto my-5">
+    <form method="POST">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <h5 class="card-title">Departure Date</h5>
+          <input type="datetime-local" name="Dep_Time" id="Dep_Time" required="required" style="width:13rem;height:3rem;border-radius:.3rem;text-align:center">
+        </div>
+        <div class="form-group col-md-6">
+          <h5 class="card-title">Arrival Date</h5>
+          <input type="datetime-local" name="Arrival_Time" id="Arrival_Time" required="required" style="width:13rem;height:3rem;border-radius:.3rem;text-align:center">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="Source"><h5 class="card-title">Source</h5></label>
+          <select id="Source" class="form-control" required="required" name="Source">
+            <option value="">Source</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Kolkata">Kolkata</option>
+            <option value="Banglore">Banglore</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Chennai">Chennai</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="Destination"><h5 class="card-title">Destination</h5></label>
+          <select id="Destination" class="form-control" required="required" name="Destination">
+            <option value="">Destination</option>
+            <option value="Cochin">Cochin</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Kolkata">Kolkata</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="Total_stops"><h5 class="card-title">Number of Stops</h5></label>
+          <select id="Total_stops" class="form-control" required="required" name="Total_stops">
+            <option value="0" selected>Non-Stop</option>
+            <option value="1">1 Stop</option>
+            <option value="2">2 Stops</option>
+            <option value="3">3 Stops</option>
+            <option value="4">4 Stops</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="Airline"><h5 class="card-title">Airline</h5></label>
+          <select id="Airline" class="form-control" required="required" name="Airline">
+            <option value="Jet Airways">Jet Airways</option>
+            <option value="IndiGo">IndiGo</option>
+            <option value="Air India">Air India</option>
+            <option value="Multiple carriers">Multiple carriers</option>
+            <option value="SpiceJet">SpiceJet</option>
+            <option value="Vistara">Vistara</option>
+            <option value="Air Asia">Air Asia</option>
+            <option value="GoAir">GoAir</option>
+            <option value="Multiple carriers Premium economy">Multiple carriers Premium economy
+            </option>
+            <option value="Jet Airways Business">Jet Airways Business</option>
+            <option value="Vistara Premium economy">Vistara Premium economy</option>
+            <option value="Trujet">Trujet</option>
+          </select>
+        </div>
+      </div>
+      <br>
+<!--      <button type="submit" class="btn btn-primary" style="height:3rem; width:6rem">Predict</button>-->
+      <button type="submit" class="btn btn-outline-success" style="height:3.2rem; width:6.25rem;font-size:1.3rem">Predict</button>
+    </form>
+    <br>
+    <h2 class="display-4 font-weight-normal text-center">{{ predictions }}</h2>
+
+  </div>
+  <div class="product-device box-shadow d-none d-md-block"></div>
+  <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+</div>
+{% endblock %}
